@@ -1,0 +1,19 @@
+- hosts: all
+  tasks:
+  - name: install packages
+    yum:
+      name: httpd
+      state: latest
+    register: hello 
+   
+
+
+  - name: Start apache
+    service:
+      name: httpd
+      state: started
+    register: kaizen
+
+
+  - debug: msg={{ hello }}
+  - debug: msg={{ kaizen }}
